@@ -99,7 +99,7 @@ class Melon(object):
     """A melon in a melon harvest."""
 
     def __init__(
-                self, 
+                self,
                 melon_type, 
                 shape_rating, 
                 color_rating, 
@@ -156,6 +156,16 @@ def make_melons(melon_types):
 
 def get_sellability_report(melons):
     """Given a list of melon object, prints whether each one is sellable."""
+
+    for melon in melons:
+        sellable = melon.is_sellable()
+
+        if sellable == True:
+            sell_phrase = 'CAN BE SOLD'
+        else:
+            sell_phrase = 'NOT SELLABLE'
+
+        print(f'Harvested by {melon.harvested_by} from Field {melon.field} ({sell_phrase})')
 
     # Fill in the rest 
 
