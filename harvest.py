@@ -123,7 +123,36 @@ class Melon(object):
 def make_melons(melon_types):
     """Returns a list of Melon objects."""
 
-    # Fill in the rest
+    melons_picked = []
+
+    melon_1 = Melon(melon_types['yw'], 8, 7, 2, 'Sheila')
+    melons_picked.append(melon_1)
+
+    melon_2 = Melon(melon_types['yw'], 3, 4, 2, 'Sheila')
+    melons_picked.append(melon_2)
+
+    melon_3 = Melon(melon_types['yw'], 9, 8, 3, 'Sheila')
+    melons_picked.append(melon_3)
+
+    melon_4 = Melon(melon_types['cas'], 10, 6, 35, 'Sheila')
+    melons_picked.append(melon_4)
+
+    melon_5 = Melon(melon_types['cren'], 8, 9, 35, 'Michael')
+    melons_picked.append(melon_5)
+
+    melon_6 = Melon(melon_types['cren'], 8, 2, 35, 'Michael')
+    melons_picked.append(melon_6)
+
+    melon_7 = Melon(melon_types['cren'], 2, 3, 4, 'Michael')
+    melons_picked.append(melon_7)
+
+    melon_8 = Melon(melon_types['musk'], 6, 7, 4, 'Michael')
+    melons_picked.append(melon_8)
+
+    melon_9 = Melon(melon_types['yw'], 7, 10, 3, 'Sheila')
+    melons_picked.append(melon_9)
+
+    return melons_picked
 
 def get_sellability_report(melons):
     """Given a list of melon object, prints whether each one is sellable."""
