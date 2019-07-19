@@ -79,7 +79,9 @@ def print_pairing_info(melon_types):
         print()
 
 def make_melon_type_lookup(melon_types):
-    """Takes a list of MelonTypes and returns a dictionary of melon type by code."""
+    """Takes a list of MelonTypes and returns a dictionary of melon type by code.
+
+        Takes in return of make_melon_types as the argument."""
 
     # melon_dict = {}
 
@@ -121,7 +123,9 @@ class Melon(object):
 
 
 def make_melons(melon_types):
-    """Returns a list of Melon objects."""
+    """Returns a list of Melon objects.
+
+        Takes in the return value of make_melon_type_lookup as the argument"""
 
     melons_picked = []
 
@@ -155,7 +159,9 @@ def make_melons(melon_types):
     return melons_picked
 
 def get_sellability_report(melons):
-    """Given a list of melon object, prints whether each one is sellable."""
+    """Given a list of melon object, prints whether each one is sellable.
+
+        Takes return value of make_melons as the argument. """
 
     for melon in melons:
         sellable = melon.is_sellable()
@@ -167,7 +173,46 @@ def get_sellability_report(melons):
 
         print(f'Harvested by {melon.harvested_by} from Field {melon.field} ({sell_phrase})')
 
-    # Fill in the rest 
+def create_melon_obj(melon_types):
+    """ Takes a harvest log and creates a list of Melon objects.
+
+        Takes in the return value of make_melon_type_lookup as the argument"""
+
+    fname = open('harvest_log.txt')
+
+    melons_picked = []
+
+    for line in fname:
+        words = line.rstrip().split()
+
+        melon_code = words[5]
+        shape_rating = words[1]
+        color_rating = words[3]
+        field = words[11]
+        harvested_by = words[8]
+
+        melon = Melon(
+                    melon_types[melon_code], 
+                    shape_rating, 
+                    color_rating, 
+                    field, 
+                    harvested_by,
+                    )
+
+        melons_picked.append(melon)
+
+    for melon in melons_picked:
+        
+        if melon.melon_type.is_seedless:
+            seeds = "no seeds"
+
+        else:
+            seeds = "seeds"
+
+        print(f'The melon picked by {melon.harvested_by} is {melon.melon_type.color} and has {seeds}.')
+
+    return melons_picked
+
 
 
 
